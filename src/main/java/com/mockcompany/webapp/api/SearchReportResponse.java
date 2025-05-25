@@ -1,25 +1,34 @@
 package com.mockcompany.webapp.api;
 
-import java.util.Map;
-
 public class SearchReportResponse {
 
-    private Integer productCount;
-    private Map<String, Integer> searchTermHits;
+    private String query;
+    private long resultCount;
+    private String timestamp;
 
-    public Integer getProductCount() {
-        return productCount;
+    public SearchReportResponse() {}
+
+    public String getQuery() {
+        return query;
     }
 
-    public void setProductCount(Integer productCount) {
-        this.productCount = productCount;
+    public void setQuery(String query) {
+        this.query = query;
     }
 
-    public Map<String, Integer> getSearchTermHits() {
-        return searchTermHits;
+    public long getResultCount() {
+        return resultCount;
     }
 
-    public void setSearchTermHits(Map<String, Integer> searchTermHits) {
-        this.searchTermHits = searchTermHits;
+    public void setResultCount(long resultCount) {
+        this.resultCount = resultCount;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

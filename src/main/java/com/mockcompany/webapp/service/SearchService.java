@@ -1,12 +1,10 @@
-package com.mockcompany.webapp.services;
-
+package com.mockcompany.webapp.service;
 
 import com.mockcompany.webapp.data.ProductItemRepository;
 import com.mockcompany.webapp.model.ProductItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,26 +17,10 @@ public class SearchService {
         this.productItemRepository = productItemRepository;
     }
 
-    public List<ProductItem> searchProducts(String query) {
-        Iterable<ProductItem> allItems = productItemRepository.findAll();
-        List<ProductItem> itemList = new ArrayList<>();
-
+    public List<ProductItem> search(String query) {
         if (query == null || query.trim().isEmpty()) {
-            allItems.forEach(itemList::add);
-            return itemList;
+            return productItemRepository.findAll();
         }
-
-        String lowerQuery = query.toLowerCase();
-
-        for (ProductItem item : allItems) {
-            boolean matchesSearch = item.getName().toLowerCase().contains(lowerQuery)
-                    || item.getDescription().toLowerCase().contains(lowerQuery);
-
-            if (matchesSearch) {
-                itemList.add(item);
-            }
-        }
-        return itemList;
+        return productItemRepository.findByNameContainingIgnoreCase(query);
     }
 }
-
