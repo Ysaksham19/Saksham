@@ -1,16 +1,17 @@
 pipeline {
-  agent any
-
-  stages {
-    stage('Install Dependencies') {
-      steps {
-        bat 'cd client-app && yarn install'
-      }
+    // See documentation: https://www.jenkins.io/doc/book/pipeline/syntax/#stages
+    agent any
+    stages {
+        stage("Build") {
+            steps {
+                sh "./gradlew assemble"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "./gradlew test"
+            }
+        }
     }
-    stage('Build and Test') {
-      steps {
-        bat 'cd client-app && yarn test'
-      }
-    }
-  }
 }
+
