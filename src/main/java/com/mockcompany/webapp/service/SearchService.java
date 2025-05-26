@@ -21,6 +21,6 @@ public class SearchService {
         if (query == null || query.trim().isEmpty()) {
             return productItemRepository.findAll();
         }
-        return productItemRepository.findByNameContainingIgnoreCase(query);
+        return productItemRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
     }
 }

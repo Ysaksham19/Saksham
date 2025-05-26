@@ -1,10 +1,13 @@
 package com.mockcompany.webapp.api;
 
+import java.util.Map;
+
 public class SearchReportResponse {
 
     private String query;
-    private long resultCount;
+    private long productCount; // ✅ Renamed to match the test
     private String timestamp;
+    private Map<String, Integer> searchTermHits;
 
     public SearchReportResponse() {}
 
@@ -16,12 +19,12 @@ public class SearchReportResponse {
         this.query = query;
     }
 
-    public long getResultCount() {
-        return resultCount;
+    public long getProductCount() {
+        return productCount;
     }
 
-    public void setResultCount(long resultCount) {
-        this.resultCount = resultCount;
+    public void setProductCount(long productCount) {
+        this.productCount = productCount;
     }
 
     public String getTimestamp() {
@@ -30,5 +33,13 @@ public class SearchReportResponse {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Map<String, Integer> getSearchTermHits() {
+        return searchTermHits;
+    }
+
+    public void setSearchTermHits(Map<String, Integer> searchTermHits) {
+        this.searchTermHits = searchTermHits;
     }
 }

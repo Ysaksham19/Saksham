@@ -8,7 +8,11 @@ import java.util.List;
 
 @Repository
 public interface ProductItemRepository extends JpaRepository<ProductItem, Long> {
-    
-    // 🔥 THIS is the method you need to declare:
+
     List<ProductItem> findByNameContainingIgnoreCase(String query);
+
+    List<ProductItem> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String query1, String query2);
+
+    // ✅ Required for ReportController to build searchTermHits map
+    long countByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String name, String description);
 }

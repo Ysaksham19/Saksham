@@ -61,7 +61,7 @@ class ReportControllerSpec extends Specification {
         mockDataService.setupMockData(coolItems + amazingItems + perfectItems + kidItems + otherItems)
 
         when:
-        SearchReportResponse response = reportController.runReport()
+        SearchReportResponse response = reportController.generateReport()
 
         then:
         response.productCount == 10

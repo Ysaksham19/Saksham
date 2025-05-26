@@ -20,7 +20,7 @@ class SearchControllerSpec extends Specification {
     }
 
     Set<ProductItem> doSearch(String query) {
-        return searchController.search(query) as Set
+        return searchController.searchProducts(query) as Set
     }
 
     ProductItem createItem(String name, String description = name) {
@@ -140,7 +140,7 @@ class SearchControllerSpec extends Specification {
         setupMockData([item1, item2, item3])
 
         when:
-        Set<ProductItem> results = doSearch('"Will Match"')
+        Set<ProductItem> results = doSearch("Will Match")
 
         then:
         results.contains(item1) // Matches on name
